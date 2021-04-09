@@ -1,0 +1,66 @@
+//SASS variables to augment Bootstrap here
+$primary: plum;
+//import bootstrap modules here or all of bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+//CSS overrides here
+
+a {
+  text-decoration: none;
+}
+
+.r4-login-panel {
+  width: 360px;
+  margin: auto;
+  margin-top: 10vh;
+  max-width: 100%;
+  min-width: 240px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
+}
+
+.r4-fullscreen-bg-img {
+  // background: url('/images/loginBg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.r4-carousel-item {
+  height: 24rem;
+  background: #000;
+  color: white;
+  position: relative;
+}
+
+.r4-carousel-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 50px;
+}
+
+.r4-carousel-overlay-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 576px) {
+  .r4-carousel-item {
+    height: 32rem;
+    background: #000;
+    color: white;
+    position: relative;
+  }
+}

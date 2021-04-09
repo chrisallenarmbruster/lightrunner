@@ -7,9 +7,9 @@ Looking to mix up a backend with `express`/`sequelize` and a frontend with
 
 ## Customize
 
-* Update project name and description in `package.json`
-* `npm install`
-* Create two postgres databases, one with the same name as how it was named in
+- Update project name and description in `package.json`
+- `npm install`
+- Create two postgres databases, one with the same name as how it was named in
   package.json and the other with "-test" appended to the name.
   (`MY_APP_NAME` should match the `name` parameter in `package.json`):
 
@@ -19,18 +19,18 @@ Looking to mix up a backend with `express`/`sequelize` and a frontend with
   createdb $MY_APP_NAME-test
   ```
 
-* By default, running `npm test` will use `MY_APP_NAME-test`, while
+- By default, running `npm test` will use `MY_APP_NAME-test`, while
   regular development uses `MY_APP_NAME`
-* Either use node module "dotenv" or create a file called `secrets.js`
+- Either use node module "dotenv" or create a file called `secrets.js`
   in the project root. If using `secrets.js`
 
-  * This file is listed in `.gitignore`, and will _only_ be required
+  - This file is listed in `.gitignore`, and will _only_ be required
     in your _development_ environment
-  * Its purpose is to attach the secret environment variables that you
+  - Its purpose is to attach the secret environment variables that you
     will use while developing
-  * However, it's **very** important that you **not** push it to
+  - However, it's **very** important that you **not** push it to
     Github! Otherwise, _prying eyes_ will find your secret API keys!
-  * It might look like this:
+  - It might look like this:
 
   ```
   process.env.GOOGLE_CLIENT_ID = 'hush hush'
@@ -48,9 +48,9 @@ This boilerplate comes with a working linter (ESLint, with
 object to can be "turned off" in `.eslintrc.json`. You may also choose
 an entirely different config if you don't like this one:
 
-* [Standard style guide](https://standardjs.com/)
-* [Airbnb style guide](https://github.com/airbnb/javascript)
-* [Google style guide](https://google.github.io/styleguide/jsguide.html)
+- [Standard style guide](https://standardjs.com/)
+- [Airbnb style guide](https://github.com/airbnb/javascript)
+- [Google style guide](https://google.github.io/styleguide/jsguide.html)
 
 ## Start
 
@@ -65,7 +65,7 @@ From there, just follow your bliss.
 
 Ready to go world wide? Here's a guide to deployment!
 
-* [EDIT] the last line of ./script/deploy !!!
+- [EDIT] the last line of ./script/deploy !!!
 
 Then your local copy of the application can be pushed up to a remote at will,
 using the included handy deployment script:
