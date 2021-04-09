@@ -5,7 +5,7 @@ import { Router } from "react-router-dom";
 import history from "./history";
 import store from "./store";
 import "./style.scss";
-import App from "./app";
+import { App } from "./components";
 import "bootstrap";
 
 // establishes socket connection

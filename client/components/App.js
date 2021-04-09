@@ -1,7 +1,6 @@
 import React from "react";
 
-import { NavBar } from "./components";
-import Routes from "./routes";
+import { NavBar, Routes } from ".";
 
 const App = () => {
   return (
