@@ -9,3 +9,4 @@ export { default as NavBar } from "./NavBar";
 export { default as UserHome } from "./UserHome";
 export { default as Login } from "./Login";
 export { default as SignUp } from "./SignUp";
+export { default as Landing } from "./Landing";

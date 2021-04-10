@@ -1,3 +1,4 @@
+const path = require("path");
 const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
@@ -27,6 +28,10 @@ module.exports = {
       {
         test: /\.(scss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: "url-loader",
       },
     ],
   },

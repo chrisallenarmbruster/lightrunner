@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { login } from "../store";
-import { removeUser, clearError } from "../store/user";
+import { clearError } from "../store/user";
 import { useEffect } from "react";
 
 const Login = (props) => {
@@ -14,11 +13,15 @@ const Login = (props) => {
   }, []);
 
   return (
-    <div className="container px-4">
-      <div className="container-fluid r4-login-panel ">
+    <div className="container-fluid r4-fullscreen-bg-img px-4 ">
+      <div className="r4-login-panel ">
         <div className="row">
           <div className="col-12 py-4">
-            <h3 className="text-center mb-4">User Login</h3>
+            {" "}
+            <h1 className="text-center display-1 text-primary">
+              <i className="bi bi-person-fill" />
+            </h1>
+            <h3 className="text-center text-primary mb-4">User Login</h3>
             <form onSubmit={props.handleSubmit} name="loginForm" className="">
               <div>
                 <label htmlFor="email" className="d-none">
