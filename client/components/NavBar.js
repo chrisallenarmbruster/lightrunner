@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logout } from "../store";
+import React from 'react'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {logout} from '../store'
 
-const NavBar = ({ handleClick, isLoggedIn }) => (
+const NavBar = ({handleClick, isLoggedIn}) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <Link className="navbar-brand text-primary fw-bold" to="/landing">
@@ -48,23 +48,23 @@ const NavBar = ({ handleClick, isLoggedIn }) => (
       </div>
     </div>
   </nav>
-);
+)
 
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.user.id,
-  };
-};
+  }
+}
 
 const mapDispatch = (dispatch) => {
   return {
     handleClick() {
-      dispatch(logout());
+      dispatch(logout())
     },
-  };
-};
+  }
+}
 
-export default connect(mapState, mapDispatch)(NavBar);
+export default connect(mapState, mapDispatch)(NavBar)
 
 /**
  * PROP TYPES
@@ -72,4 +72,4 @@ export default connect(mapState, mapDispatch)(NavBar);
 NavBar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-};
+}

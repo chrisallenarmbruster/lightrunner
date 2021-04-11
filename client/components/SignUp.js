@@ -1,52 +1,52 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { signup } from "../store";
-import { clearError } from "../store/user";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import React from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {signup} from '../store'
+import {clearError} from '../store/user'
+import {useEffect} from 'react'
+import {useForm} from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 const schema = yup.object().shape({
   email: yup
-    .string("Valid email required!")
-    .email("Valid email required!")
-    .required("Valid email required!"),
+    .string('Valid email required!')
+    .email('Valid email required!')
+    .required('Valid email required!'),
   password: yup
     .string()
-    .min(8, "At least 8 chars!")
-    .max(20, "At most 20 chars!")
+    .min(8, 'At least 8 chars!')
+    .max(20, 'At most 20 chars!')
     .required(),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref("password")], "Passwords must match!"),
-});
+    .oneOf([yup.ref('password')], 'Passwords must match!'),
+})
 
 const SignUp = (props) => {
   useEffect(() => {
     return () => {
-      props.clearAlert();
-    };
-  }, []);
+      props.clearAlert()
+    }
+  }, [])
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
   const submitForm = (data) => {
-    console.log(data);
-    props.handleSubmit(data);
-  };
+    console.log(data)
+    props.handleSubmit(data)
+  }
 
   return (
     <div
       className="container-fluid r4-fullscreen-bg-img px-4 "
-      style={{ backgroundImage: "url(/images/background/default.jpg)" }}
+      style={{backgroundImage: 'url(/images/background/default.jpg)'}}
     >
       <div className="r4-login-panel ">
         <div className="row">
@@ -69,11 +69,12 @@ const SignUp = (props) => {
                   type="text"
                   className="form-control mb-2"
                   placeholder="email address"
-                  {...register("email")}
-                />{" "}
+                  {...register('email')}
+                />{' '}
                 {errors.email && (
                   <p className="text-danger">
-                    <i className="bi bi-exclamation-diamond-fill" />&nbsp;
+                    <i className="bi bi-exclamation-diamond-fill" />
+                    &nbsp;
                     {errors.email.message}
                   </p>
                 )}
@@ -88,11 +89,12 @@ const SignUp = (props) => {
                   type="password"
                   className="form-control mb-2"
                   placeholder="password"
-                  {...register("password")}
+                  {...register('password')}
                 />
                 {errors.password && (
                   <p className="text-danger">
-                    <i className="bi bi-exclamation-diamond-fill" />&nbsp;
+                    <i className="bi bi-exclamation-diamond-fill" />
+                    &nbsp;
                     {errors.password.message}
                   </p>
                 )}
@@ -106,11 +108,12 @@ const SignUp = (props) => {
                   type="password"
                   className="form-control mb-2"
                   placeholder="confirm password"
-                  {...register("passwordConfirm")}
+                  {...register('passwordConfirm')}
                 />
                 {errors.passwordConfirm && (
                   <p className="text-danger">
-                    <i className="bi bi-exclamation-diamond-fill" />&nbsp;
+                    <i className="bi bi-exclamation-diamond-fill" />
+                    &nbsp;
                     {errors.passwordConfirm.message}
                   </p>
                 )}
@@ -128,25 +131,26 @@ const SignUp = (props) => {
                   className="alert alert-danger alert-dismissible fade show"
                   role="alert"
                 >
-                  <i className="bi bi-exclamation-diamond-fill" />&nbsp;
-                  {props.error.response.data}{" "}
+                  <i className="bi bi-exclamation-diamond-fill" />
+                  &nbsp;
+                  {props.error.response.data}{' '}
                   <button
                     type="button"
                     className="btn-close"
                     data-bs-dismiss="alert"
                     aria-label="Close"
                     onClick={props.clearAlert}
-                  />{" "}
+                  />{' '}
                 </div>
               )}
               <p className="text-center text-secondary mt-3 mb-1 d-none d-sm-block">
-                {" "}
+                {' '}
                 &mdash;&mdash;&mdash;&mdash;&mdash; &#8195;Already a
-                user?&#8195; &mdash;&mdash;&mdash;&mdash;&mdash;{" "}
+                user?&#8195; &mdash;&mdash;&mdash;&mdash;&mdash;{' '}
               </p>
               <p className="text-center text-secondary mt-3 mb-1 d-block d-sm-none">
-                {" "}
-                &mdash; &#8195;Already a user?&#8195; &mdash;{" "}
+                {' '}
+                &mdash; &#8195;Already a user?&#8195; &mdash;{' '}
               </p>
             </form>
             {/* <a href="/auth/google">{displayName} with Google</a> */}
@@ -160,22 +164,22 @@ const SignUp = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     error: state.user.error,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit(validatedData) {
-      dispatch(signup(validatedData.email, validatedData.password));
+      dispatch(signup(validatedData.email, validatedData.password))
     },
     clearAlert: () => dispatch(clearError()),
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

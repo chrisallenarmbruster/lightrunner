@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { NavBar, Routes } from ".";
+import {NavBar, Routes} from '.'
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <NavBar />
       <Routes />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

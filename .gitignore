@@ -7,9 +7,6 @@ public/bundle.js.map
 .env
 .env.test
 
-# secrets -alternative to dotenv for hiding API keys, etc.
-secrets.js
-
 # Dependency directories
 node_modules/
 jspm_packages/
