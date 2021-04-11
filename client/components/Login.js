@@ -13,7 +13,10 @@ const Login = (props) => {
   }, []);
 
   return (
-    <div className="container-fluid r4-fullscreen-bg-img px-4 ">
+    <div
+      className="container-fluid r4-fullscreen-bg-img px-4 "
+      style={{ backgroundImage: "url(/images/background/default.jpg)" }}
+    >
       <div className="r4-login-panel ">
         <div className="row">
           <div className="col-12 py-4">
@@ -80,10 +83,11 @@ const Login = (props) => {
               </p>
             </form>
             {/* <a href="/auth/google">{displayName} with Google</a> */}
-            <Link to="/signup">
-              <button className="btn btn-outline-primary form-control mb-1">
-                Sign Up
-              </button>
+            <Link
+              to="/signup"
+              className="btn btn-outline-primary form-control mb-1"
+            >
+              Sign Up
             </Link>
           </div>
         </div>

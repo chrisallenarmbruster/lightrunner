@@ -7,7 +7,7 @@ import { logout } from "../store";
 const NavBar = ({ handleClick, isLoggedIn }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
-      <Link className="navbar-brand text-primary fw-bold" to="/">
+      <Link className="navbar-brand text-primary fw-bold" to="/landing">
         Brand
       </Link>
       <button
@@ -50,9 +50,6 @@ const NavBar = ({ handleClick, isLoggedIn }) => (
   </nav>
 );
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.user.id,

@@ -20,7 +20,7 @@ const Landing = () => {
               to="/login"
               className="btn btn-primary btn-lg mb-5 text-light"
             >
-              Get Started
+              Action #1
             </Link>
           </div>
         </div>
@@ -35,7 +35,7 @@ const Landing = () => {
               to="/login"
               className="btn btn-primary btn-lg mb-5 text-light"
             >
-              Get Started
+              Action #2
             </Link>
           </div>
         </div>
@@ -50,7 +50,7 @@ const Landing = () => {
               to="/login"
               className="btn btn-primary btn-lg mb-5 text-light"
             >
-              Get Started
+              Action #3
             </Link>
           </div>
         </div>{" "}

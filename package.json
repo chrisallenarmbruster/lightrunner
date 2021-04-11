@@ -14,12 +14,10 @@
     "lint-fix": "npm run lint -- --fix",
     "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "postinstall": "touch secrets.js",
     "seed": "node script/seed.js",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
-    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
-    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "husky": {
     "hooks": {
@@ -40,6 +38,7 @@
   "author": "Chris Armbruster",
   "license": "MIT",
   "dependencies": {
+    "@hookform/resolvers": "^2.2.0",
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
@@ -47,6 +46,7 @@
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
     "css-loader": "^5.2.0",
+    "dotenv": "^8.2.0",
     "eslint-config-prettier": "^8.1.0",
     "express": "^4.16.4",
     "express-session": "^1.15.1",
@@ -64,6 +64,7 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.8.6",
+    "react-hook-form": "^7.0.5",
     "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
@@ -74,7 +75,8 @@
     "sequelize": "^5.3.1",
     "socket.io": "^2.2.0",
     "style-loader": "^2.0.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

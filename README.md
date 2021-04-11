@@ -2,41 +2,48 @@
 
 _Good things come in pairs_
 
-Looking to mix up a backend with `express`/`sequelize` and a frontend with
-`react`/`redux`? That's `boilerplate-pern`!
+Looking to integrate a backend with `express`/`sequelize`/`postgres` and a
+frontend with `react`/`redux`? That's `boilerplate-pern`!
 
 ## Customize
 
 - Update project name and description in `package.json`
 - `npm install`
-- Create two postgres databases, one with the same name as how it was named in
-  package.json and the other with "-test" appended to the name.
-  (`MY_APP_NAME` should match the `name` parameter in `package.json`):
+
+## Database
+
+- Create a postgres database with the SAME NAME as how it was named in
+  package.json:
 
   ```
-  export MY_APP_NAME=<'name' parameter in package.json>
-  createdb $MY_APP_NAME
-  createdb $MY_APP_NAME-test
+  createdb <'name' parameter in package.json>
   ```
 
-- By default, running `npm test` will use `MY_APP_NAME-test`, while
-  regular development uses `MY_APP_NAME`
-- Either use node module "dotenv" or create a file called `secrets.js`
-  in the project root. If using `secrets.js`
+- Seed the database - `npm run seed` - there is a `seed.js` file in the
+  script directory to get you started with three user accounts.
+
+## Environment Variables
+
+- Use node module "dotenv" and create a file called `.env`
+  in the project root.
 
   - This file is listed in `.gitignore`, and will _only_ be required
     in your _development_ environment
   - Its purpose is to attach the secret environment variables that you
-    will use while developing
-  - However, it's **very** important that you **not** push it to
-    Github! Otherwise, _prying eyes_ will find your secret API keys!
+    will use while developing. In production it will use the env variables
+    set in the server environment. On Heroku you can set these in the
+    dashboard. On your local NAS, you can either set the variables or
+    use a .env file. Just don't have the .env file on GitHub or in a public
+    directory.
+  - It's **very** important that you **not** push it to Github!
+    Otherwise, _prying eyes_ will find your secret API keys!
   - It might look like this:
 
-  ```
-  process.env.GOOGLE_CLIENT_ID = 'hush hush'
-  process.env.GOOGLE_CLIENT_SECRET = 'pretty secret'
-  process.env.GOOGLE_CALLBACK = '/auth/google/callback'
-  ```
+    ```
+    GOOGLE_CLIENT_ID="hush hush"
+    GOOGLE_CLIENT_SECRET="pretty secret"
+    GOOGLE_CALLBACK="/auth/google/callback"
+    ```
 
 ## Linting
 
@@ -52,6 +59,18 @@ an entirely different config if you don't like this one:
 - [Airbnb style guide](https://github.com/airbnb/javascript)
 - [Google style guide](https://google.github.io/styleguide/jsguide.html)
 
+## Styling (SASS, SCSS, CSS)
+
+This boilerplate is set up to use SASS for client styling. See the
+`style.scss` file in the /client directory. It is configured to use
+Bootstrap CSS and Bootstrap Icons. Apply your custom CSS tweaks in
+this file or import your own CSS into this file.
+
+Should you wish to use a framework other than Bootstrap, or remove
+Bootstrap and entirely brew your own, no worries, but be advised that
+the React components included in this boilerplate depend on Bootstrap
+style classes - you will need to tweak the components accordingly.
+
 ## Start
 
 Running `npm run start-dev` will make great things happen!
@@ -65,7 +84,7 @@ From there, just follow your bliss.
 
 Ready to go world wide? Here's a guide to deployment!
 
-- [EDIT] the last line of ./script/deploy !!!
+- [EDIT] the last line of `./script/deploy` !!!
 
 Then your local copy of the application can be pushed up to a remote at will,
 using the included handy deployment script:
@@ -92,7 +111,9 @@ using the included handy deployment script:
     _ `git checkout master`: return to your master branch
     _ `git branch -D deploy`: remove the deploy branch
 
-Now, you should be deployed!
+Now, you should be deployed! Don't forget to set the ENV variables in the
+production environment if needed. Also, remember to create a database in
+production and seed it.
 
 Why do all of these steps? The big reason is because we don't want our
 production server to be cluttered up with dev dependencies like

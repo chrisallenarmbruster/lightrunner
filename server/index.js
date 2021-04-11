@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
@@ -7,26 +8,10 @@ const passport = require("passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 1337;
 const app = express();
 const socketio = require("socket.io");
 module.exports = app;
-
-// This is a global Mocha hook, used for resource cleanup.
-// Otherwise, Mocha v4+ never quits after tests.
-if (process.env.NODE_ENV === "test") {
-  after("close the session store", () => sessionStore.stopExpiringSessions());
-}
-
-/**
- * In your development environment, you can keep all of your
- * app's secret API keys in a file called `secrets.js`, in your project
- * root. This file is included in the .gitignore - it will NOT be tracked
- * or show up on Github. On your production server, you can add these
- * keys as environment variables, so that they can still be read by the
- * Node process on process.env
- */
-if (process.env.NODE_ENV !== "production") require("../secrets");
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id));
@@ -54,7 +39,7 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || "a really good secret",
+      secret: process.env.SESSION_SECRET || "an awesome secret",
       store: sessionStore,
       resave: false,
       saveUninitialized: false,
@@ -97,7 +82,7 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
+    console.log(`Listening on port ${PORT}`)
   );
 
   // set up our socket control center

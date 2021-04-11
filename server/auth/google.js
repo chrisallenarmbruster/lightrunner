@@ -10,12 +10,12 @@ module.exports = router;
  * you will be able to set these environment variables with the appropriate
  * values. In development, a good practice is to keep a separate file with
  * these secrets that you only share with your team - it should NOT be tracked
- * by git! In this case, you may use a file called `secrets.js`, which will
+ * by git! In this case, use a file called `.env` in your root directory, which will
  * set these environment variables like so:
  *
- * process.env.GOOGLE_CLIENT_ID = 'your google client id'
- * process.env.GOOGLE_CLIENT_SECRET = 'your google client secret'
- * process.env.GOOGLE_CALLBACK = '/your/google/callback'
+ * GOOGLE_CLIENT_ID="your google client id"
+ * GOOGLE_CLIENT_SECRET="your google client secret"
+ * GOOGLE_CALLBACK="/your/google/callback"
  */
 
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
