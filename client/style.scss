@@ -1,4 +1,9 @@
-//SASS variables to augment Bootstrap here
+//SASS variables to augment Bootstrap here.  Refer to Bootstrap documentation
+//for details on how adjust it's defaults using SASS variables.  Check out
+//Colormind at http://colormind.io/bootstrap/ for some help with creating
+//your own color scheme.
+
+//Alternate scheme with sky blue primary
 $primary: #2b9ad2;
 $secondary: #9c9d97;
 $info: #9c6b49;
@@ -7,6 +12,16 @@ $warning: #bf993f;
 $danger: #f44336;
 $light: #f5f5f2;
 $dark: #263948;
+
+//Alternate scheme with hot pink primary
+// $primary: #ec2772;
+// $secondary: #878692;
+// $info: #ca9f7f;
+// $success: #7c865a;
+// $warning: #f97622;
+// $danger: #f44336;
+// $light: #f3f5f4;
+// $dark: #283434;
 
 //import bootstrap modules here or all of bootstrap.
 @import 'bootstrap/scss/bootstrap';
