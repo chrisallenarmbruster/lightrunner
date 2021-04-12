@@ -18,7 +18,7 @@ To use this as boilerplate, you'll need to take the following steps:
   ```
   git remote add boilerplate-pern https://github.com/chrisallenarmbruster/boilerplate-pern.git
   git fetch boilerplate-pern
-  git merge boilerplate-pern/master
+  git merge boilerplate-pern/main
   ```
 
 - Why did we do that? Because every once in a while, `boilerplate-pern` may
@@ -27,7 +27,7 @@ To use this as boilerplate, you'll need to take the following steps:
 
   ```
   git fetch boilerplate-pern
-  git merge boilerplate-pern/master
+  git merge boilerplate-pern/main
   ```
 
 ## Customize
