@@ -137,7 +137,7 @@ are not taking the approach above. It involves pushing your code to a git
 remote you define on the production site. The remaineder of this section
 involes doing that.
 
-- [Be-Sure-To-EDIT] the last line of `./script/deploy` !!!
+- BE SURE TO EDIT the last line of `./script/deploy` !!!
 
 Then run the deploy script:
 
