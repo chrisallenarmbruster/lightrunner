@@ -11,7 +11,8 @@ To use this as boilerplate, you'll need to take the following steps:
 
 - Don't fork or clone this repo! Instead, create a new, empty
   directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine). Then fetch this boilerplate
+  GitHub and clone it to your local machine) named for the app that you
+  will be using this boilerplate for. Then fetch the boilerplate
   and merge it into your repository. Something like this:
 
   ```
