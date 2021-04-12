@@ -5,6 +5,30 @@ _Good things come in pairs_
 Looking to integrate a backend with `express`/`sequelize`/`postgres` and a
 frontend with `react`/`redux`? That's `boilerplate-pern`!
 
+## Setup
+
+To use this as boilerplate, you'll need to take the following steps:
+
+- Don't fork or clone this repo! Instead, create a new, empty
+  directory on your machine and `git init` (or create an empty repo on
+  Github and clone it to your local machine). Then fetch this boilerplate
+  and merge it into your repository. Something like this:
+
+  ```
+  git remote add boilerplate-pern https://github.com/chrisallenarmbruster/boilerplate-pern.git
+  git fetch boilerplate-pern
+  git merge boilerplate-pern/master
+  ```
+
+- Why did we do that? Because every once in a while, `boilerplate-pern` may
+  be updated with additional features or bug fixes, and you can easily
+  get those changes from now on by entering:
+
+  ```
+  git fetch boilerplate-pern
+  git merge boilerplate-pern/master
+  ```
+
 ## Customize
 
 - Update project name and description in `package.json`
@@ -17,6 +41,15 @@ frontend with `react`/`redux`? That's `boilerplate-pern`!
 
   ```
   createdb <'name' parameter in package.json>
+
+  ```
+
+  - For example, if your `name` key in `package.json` was `boilerplate-pern`
+    then you would create the database as follows:
+
+  ```
+  createdb boilerplate-pern
+
   ```
 
 - Seed the database - `npm run seed` - there is a `seed.js` file in the
@@ -24,12 +57,16 @@ frontend with `react`/`redux`? That's `boilerplate-pern`!
 
 ## Environment Variables
 
-- Use node module "dotenv" and create a file called `.env`
-  in the project root.
+- This boilerplate uses the "dotenv" node module. If an `.env` file
+  in the project root does not exist, create one for setting environment
+  variables to use during development. Note that the production instance
+  will often set these a different way - sometimes you system admin may
+  set these and when deploying to a cloud app hosting service, you might
+  set these in the dashboard for that service.
 
   - This file is listed in `.gitignore`, and will _only_ be required
     in your _development_ environment
-  - Its purpose is to attach the secret environment variables that you
+  - Its purpose is to attach the environment variables (often secret) that you
     will use while developing. In production it will use the env variables
     set in the server environment. On Heroku you can set these in the
     dashboard. On your local NAS, you can either set the variables or
@@ -43,6 +80,13 @@ frontend with `react`/`redux`? That's `boilerplate-pern`!
     GOOGLE_CLIENT_ID="hush hush"
     GOOGLE_CLIENT_SECRET="pretty secret"
     GOOGLE_CALLBACK="/auth/google/callback"
+    ```
+
+  - You can also set variables here that are relevant only to development and
+    not necessarily secret:
+
+    ```
+    PORT=8080
     ```
 
 ## Linting
@@ -82,21 +126,41 @@ From there, just follow your bliss.
 
 ## Deployment
 
-Ready to go world wide? Here's a guide to deployment!
+Ready to go world wide? Here's a guide to deployment. You can set up
+many application hosting services to automatically update the live app
+whenever your main/master branch on GitHub is updated. If you do this, be
+sure your webpack files `bundle.js` and `bundle.js.map` are pushing up
+as well and not being sidestepped by your .gitignore file.
 
-- [EDIT] the last line of `./script/deploy` !!!
+There is a deployment script included in this boilerplate as well if you
+are not taking the approach above. It involves pushing your code to a git
+remote you define on the production site. The remaineder of this section
+involes doing that.
+
+- [Be-Sure-To-EDIT] the last line of `./script/deploy` !!!
+
+Then run the deploy script:
+
+`npm run deploy`
+
+If you get a "Permission denied" error it may mean you don't have execute
+permissions on the "deploy" script. If this happens, navigate to the
+directory that this script is in and from there, give yourself execute
+permission by typing "sudo chmod +x deploy" in the console.
 
 Then your local copy of the application can be pushed up to a remote at will,
-using the included handy deployment script:
+using the included handy deployment script, by running `npm run deploy`. It's
+not automatic with every code merge; it only deploys when you run the script.
 
-1.  Make sure that all your work is fully committed and merged into your
-    master branch on Github.
-2.  If you currently have an existing branch called "deploy", delete
+This is what it the script does (note you can do this one line at a time in
+the terminal rather than running the script if preferred):
+
+1.  Before running, make sure that all your work is fully committed and merged
+    into your master branch on Github.
+2.  And if you currently have an existing branch called "deploy", delete
     it now (`git branch -d deploy`). We will use a dummy branch
-    with the name `deploy` (see below), so and the script below will error if a
-    branch with that name already exists.
-3.  `npm run deploy`
-    _ this will cause the following commands to happen in order:
+    with the name `deploy` (see below).
+3.  Now deploy your code (the script runs these commands for you):
     _ `git checkout -b deploy`: checks out a new branch called
     `deploy`. Note that the name `deploy` here is not magical, but it needs
     to match the name of the branch we specify when we push to our production
@@ -104,12 +168,11 @@ using the included handy deployment script:
     _ `webpack -p`: webpack will run in "production mode"
     _ `git add -f public/bundle.js public/bundle.js.map`: "force" add
     these files which are listed in `.gitignore`.
-    _ `git commit --allow-empty -m 'Deploying'`: create a commit, even
-    if nothing changed
+    _ `git commit --allow-empty -m 'Deploying'`: create/force a commit
     _ `git push --force <production remote> deploy:master`: push your local
     `deploy` branch to the `master` branch on the production remote
     _ `git checkout master`: return to your master branch
-    _ `git branch -D deploy`: remove the deploy branch
+    \_ `git branch -D deploy`: remove the deploy branch
 
 Now, you should be deployed! Don't forget to set the ENV variables in the
 production environment if needed. Also, remember to create a database in

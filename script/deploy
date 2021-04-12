@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#If you get a "Permission denied" it may mean you don't have execute 
+#permissions on the "deploy" script. If this happens, navigate to the
+#directory that this script is in and from there, give yourself execute 
+#permission by typing "sudo chmod +x deploy" in the console.
 
 # Hello, welcome to a bash script.
 
@@ -12,6 +16,7 @@
 
 # We want this entire script to exit if any single line fails.
 # So we set the `-e` flag.
+
 set -e
 
 # If our deploy fails partway through we want to clean up after ourselves.
@@ -46,3 +51,11 @@ git commit --allow-empty -m 'Deploying'
 # git push <remote> <local branch name>:<remote branch to push into>
 # replace <remote> with production remote
 git push --force <remote> deploy:master
+
+#For a deployment to Heroku where you've already logged into Heroku and created
+#an app this last command would look like "git push --force heroku deploy:master"
+
+#If you get a "Permission denied" it may mean you don't have execute 
+#permissions on the "deploy" script. If this happens, navigate to the
+#directory that this script is in and from there, give yourself execute 
+#permission by typing "sudo chmod +x deploy" in the console.
