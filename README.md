@@ -1,6 +1,6 @@
-# ATTENTION! this boilerplate is still in development. It is being
-
-# converted from PERN to FERN. Not ready for use!
+# ATTENTION! this boilerplate is still in development. 
+# It is being converted from PERN to FERN. 
+# Not ready for use!
 
 # boilerplate-pern
 
