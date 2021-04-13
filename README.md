@@ -1,9 +1,18 @@
+# ATTENTION! this boilerplate is still in development. It is being
+
+# converted from PERN to FERN. Not ready for use!
+
 # boilerplate-pern
 
 _Good things come in pairs_
 
-Looking to integrate a backend with `express`/`sequelize`/`postgres` and a
-frontend with `react`/`redux`? That's `boilerplate-pern`!
+Looking to integrate a backend with `express` that substitutes the
+file system for a database with a frontend having `react`/`redux`?  
+That's `boilerplate-fern`!
+
+This is for implementations where the developer may not want to have
+the overhead of a database in the solution. It was created for
+smaller IoT devices running Node, but not having a database.
 
 ## Setup
 
@@ -16,9 +25,9 @@ To use this as boilerplate, you'll need to take the following steps:
   and merge it into your repository. Something like this:
 
   ```
-  git remote add boilerplate-pern https://github.com/chrisallenarmbruster/boilerplate-pern.git
-  git fetch boilerplate-pern
-  git merge boilerplate-pern/main
+  git remote add boilerplate-pern https://github.com/chrisallenarmbruster/boilerplate-fern.git
+  git fetch boilerplate-fern
+  git merge boilerplate-fern/main
   ```
 
 - Why did we do that? Because every once in a while, `boilerplate-pern` may
@@ -26,8 +35,8 @@ To use this as boilerplate, you'll need to take the following steps:
   get those changes from now on by entering:
 
   ```
-  git fetch boilerplate-pern
-  git merge boilerplate-pern/main
+  git fetch boilerplate-fern
+  git merge boilerplate-fern/main
   ```
 
 ## Customize
