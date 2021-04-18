@@ -1,33 +1,26 @@
 {
-  "lastPk": 4,
+  "lastPk": 3,
   "data": [
     {
       "id": 1,
       "email": "default@email.com",
-      "password": "606dd18d564e11ff8b722b4e12538ef2a290db7c02ba0e48c7c1c02ae78bb6ae",
-      "salt": "ZJJJMZYjr5PlvYx2tMD5QQ==",
+      "password": "623cd8d29a7ad87f2f43668e98cb027c263729c86d7a8facfa4cb589e53293f4",
+      "salt": "DC7wTy8/mxYKY+wd6bgvxQ==",
       "googleId": null
     },
     {
       "id": 2,
       "email": "user1@email.com",
-      "password": "8a7e2b51f986341ee329b5fa789542e027f3152ea7ded857a679930939bb9608",
-      "salt": "NZTgDHp+xfq52/Hz9BZUnw==",
+      "password": "ff20af29da95b317e104ae832d2e20a21e162af048092bee77362cc68c84d384",
+      "salt": "462g836QKFdXqdz3qjEBaw==",
       "googleId": null
     },
     {
       "id": 3,
       "email": "user2@email.com",
-      "password": "e19890c21804492777514d51af7ec2c909b4798d309748c1fa19aad866728e7f",
-      "salt": "j3+Lr8f6hJgbn9ICUpLyDw==",
+      "password": "6742bff819c380e7c339f869cae4dea2bc773b9a1aaf690e258271a26f11c24a",
+      "salt": "EumSgGpP7c3/gIwUef9xJg==",
       "googleId": null
-    },
-    {
-      "id": 4,
-      "email": "test@email.com",
-      "password": "0affa08200c7e4176ec5f5565e2ed05686846ef1ba7f91aded44873c2dd080ba",
-      "salt": "2IzO8YpFGjR3cmX2QYyx0A==",
-      "googleId": ""
     }
   ]
 }

@@ -1,6 +1,13 @@
 const fse = require('fs-extra')
 const path = require('path')
 
+//this class implements basic CRUD capabilities against the filesystem,
+//as opposed to a database when scale permits and it is not practical or
+//desirable to have a database involved.  Note that this is very basic
+//and does not offer relationships between tables.  Create an object
+//for each table desired.  The constructor expects a file name for
+//where it will store the table.
+
 class FileDbTable {
   constructor(fileName) {
     this.file = path.join(__dirname, '/data/', fileName)

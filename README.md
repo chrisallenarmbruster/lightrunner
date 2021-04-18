@@ -1,18 +1,21 @@
-# ATTENTION! this boilerplate is still in development. 
-# It is being converted from PERN to FERN. 
-# Not ready for use!
+# boilerplate-fern
 
-# boilerplate-pern
-
-_Good things come in pairs_
+_Full Stack without a Database_
 
 Looking to integrate a backend with `express` that substitutes the
-file system for a database with a frontend having `react`/`redux`?  
+filesystem for a database with a frontend having `react`/`redux`?  
 That's `boilerplate-fern`!
 
 This is for implementations where the developer may not want to have
-the overhead of a database in the solution. It was created for
-smaller IoT devices running Node, but not having a database.
+the overhead of a database in the solution or connecting to a database
+is not practical or desirable. It was created for smaller IoT devices
+running Node, but not having a local database or a reliable connection
+to a remote database. It uses the filesystem for data persistence between
+boots. More details are included in the 'Data' section below.
+
+Note that this is not a scaleable solution, but just the opposite. It is
+a miniturized solution for when data storage and retrival needs are lower
+and simultaneous logins are low as well.
 
 ## Setup
 
@@ -30,7 +33,7 @@ To use this as boilerplate, you'll need to take the following steps:
   git merge boilerplate-fern/main
   ```
 
-- Why did we do that? Because every once in a while, `boilerplate-pern` may
+- Why did we do that? Because every once in a while, `boilerplate-fern` may
   be updated with additional features or bug fixes, and you can easily
   get those changes from now on by entering:
 
@@ -44,26 +47,22 @@ To use this as boilerplate, you'll need to take the following steps:
 - Update project name and description in `package.json`
 - `npm install`
 
-## Database
+## Data
 
-- Create a postgres database with the SAME NAME as how it was named in
-  package.json:
+As mentioned above, there is no integration to a database included by design.
+With that said, there is a 'FileDbTable' class included for:
 
-  ```
-  createdb <'name' parameter in package.json>
+- Creating 'table' objects for storing data as objects in an array
+  similar to rows in a table
+- Providing basic CRUD methods for interacting 'tables'
+- Persisting the data using the filesystem
+- Retrieving the data from the filesystem at boot
+- It is used in this boilerplate for user accounts and authentication.
 
-  ```
+You can locate the related resources in the /server/fileDb directory.
 
-  - For example, if your `name` key in `package.json` was `boilerplate-pern`
-    then you would create the database as follows:
-
-  ```
-  createdb boilerplate-pern
-
-  ```
-
-- Seed the database - `npm run seed` - there is a `seed.js` file in the
-  script directory to get you started with three user accounts.
+Seed the application - `npm run seed` - there is a `seed.js` file in the
+script directory to get you started that creates three user accounts.
 
 ## Environment Variables
 
@@ -107,16 +106,12 @@ has a consistent style, which is critical to writing readable code.
 This boilerplate comes with a working linter (ESLint, with
 `eslint-config-fullstack`) "out of the box." Any linter rule that you
 object to can be "turned off" in `.eslintrc.json`. You may also choose
-an entirely different config if you don't like this one:
-
-- [Standard style guide](https://standardjs.com/)
-- [Airbnb style guide](https://github.com/airbnb/javascript)
-- [Google style guide](https://google.github.io/styleguide/jsguide.html)
+an entirely different config if you don't like this one.
 
 ## Styling (SASS, SCSS, CSS)
 
-This boilerplate is set up to use SASS for client styling. See the
-`style.scss` file in the /client directory. It is configured to use
+This boilerplate is set up to use compiled SASS for client styling. See
+the `style.scss` file in the /client directory. It is configured to use
 Bootstrap CSS and Bootstrap Icons. Apply your custom CSS tweaks in
 this file or import your own CSS into this file.
 
@@ -185,8 +180,8 @@ the terminal rather than running the script if preferred):
     \_ `git branch -D deploy`: remove the deploy branch
 
 Now, you should be deployed! Don't forget to set the ENV variables in the
-production environment if needed. Also, remember to create a database in
-production and seed it.
+production environment if needed. Also, remember to seed any application
+data if applicable.
 
 Why do all of these steps? The big reason is because we don't want our
 production server to be cluttered up with dev dependencies like
