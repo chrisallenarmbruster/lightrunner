@@ -27,6 +27,16 @@ class FileDbTable {
     }
   }
 
+  async reset() {
+    try {
+      this.lastPk = 0
+      this.data = []
+      await fse.writeJson(this.file, {lastPk: 0, data: []})
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   findAll() {
     return this.data
   }

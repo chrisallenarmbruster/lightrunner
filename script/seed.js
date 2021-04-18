@@ -1,25 +1,45 @@
 'use strict'
 
-const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User} = require('../server/fileDb')
+const {setSaltAndPassword} = require('../server/fileDb/passwordTools')
 
 async function seed() {
-  await db.sync({force: true})
-  console.log('db synced!')
+  await User.reset()
 
-  const users = await Promise.all([
-    User.create({email: 'default@email.com', password: '123'}),
-    User.create({email: 'user@email.com', password: '123'}),
-    User.create({email: 'admin@email.com', password: '123'}),
-  ])
+  const users = [
+    {
+      email: 'default@email.com',
+      password: '123',
+      googleId: null,
+    },
+    {
+      email: 'user1@email.com',
+      password: '123',
+      googleId: null,
+    },
+    {
+      email: 'user2@email.com',
+      password: '123',
+      googleId: null,
+    },
+  ]
+
+  for (let i = 0; i < users.length; i++) {
+    let user = await setSaltAndPassword(users[i])
+    user = await User.create({
+      email: user.email,
+      password: user.password,
+      salt: user.salt,
+      googleId: user.googleId,
+    })
+  }
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
+
+  await User.init()
 }
 
-// We've separated the `seed` function from the `runSeed` function.
-// This way we can isolate the error handling and exit trapping.
-// The `seed` function is concerned only with modifying the database.
 async function runSeed() {
   console.log('seeding...')
   try {
@@ -28,9 +48,7 @@ async function runSeed() {
     console.error(err)
     process.exitCode = 1
   } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+    console.log('seeding complete')
   }
 }
 

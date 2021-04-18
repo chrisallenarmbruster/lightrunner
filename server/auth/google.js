@@ -40,7 +40,12 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       try {
         let user = await User.findOneByKeyValue('googleId', googleId)
         if (!user) {
-          user = await User.create({email: email, googleId: googleId})
+          user = await User.create({
+            email: email,
+            password: '',
+            salt: '',
+            googleId: googleId,
+          })
         }
         done(null, user)
       } catch {

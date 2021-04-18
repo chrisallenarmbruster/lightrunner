@@ -1,0 +1,40 @@
+{
+  "lastPk": 5,
+  "data": [
+    {
+      "id": 1,
+      "email": "default@email.com",
+      "password": "123",
+      "salt": "",
+      "googleId": null
+    },
+    {
+      "id": 2,
+      "email": "user@email.com",
+      "password": "123",
+      "salt": "",
+      "googleId": null
+    },
+    {
+      "id": 3,
+      "email": "user2@email.com",
+      "password": "123",
+      "salt": "",
+      "googleId": null
+    },
+    {
+      "id": 4,
+      "email": "test@email.com",
+      "password": "1433e8bdbc1aa43ab63ea3b450bfb8d4468729d8beabf1d62f381b2b015e53c9",
+      "salt": "bl9s2xaP8PERxIkCVr0gJg==",
+      "googleId": ""
+    },
+    {
+      "id": 5,
+      "email": "test2@email.com",
+      "password": "e6ee1414904dd410d1d1585468e12a083694cc166be94b46c2d549c40f650a82",
+      "salt": "OFCG8gnEubZodiq+zD3Cng==",
+      "googleId": ""
+    }
+  ]
+}
