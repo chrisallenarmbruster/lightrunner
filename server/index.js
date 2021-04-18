@@ -5,12 +5,15 @@ const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const db = require('./db')
-const sessionStore = new SequelizeStore({db})
+//const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const MemoryStore = require('memorystore')(session)
+// const db = require('./db')
+//const sessionStore = new SequelizeStore({db})
+const sessionStore = new MemoryStore({checkPeriod: 86400000})
 const PORT = process.env.PORT || 1337
 const app = express()
 const socketio = require('socket.io')
+const {User} = require('./fileDb')
 module.exports = app
 
 // passport registration
@@ -18,7 +21,7 @@ passport.serializeUser((user, done) => done(null, user.id))
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.models.user.findByPk(id)
+    const user = await User.findById(id)
     done(null, user)
   } catch (err) {
     done(err)
@@ -90,11 +93,12 @@ const startListening = () => {
   require('./socket')(io)
 }
 
-const syncDb = () => db.sync()
+// const syncDb = () => db.sync()
 
 async function bootApp() {
-  await sessionStore.sync()
-  await syncDb()
+  //await sessionStore.sync()
+  // await syncDb()
+  await User.init()
   await createApp()
   await startListening()
 }

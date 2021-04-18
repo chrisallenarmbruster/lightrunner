@@ -1,7 +1,7 @@
 const passport = require('passport')
 const router = require('express').Router()
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
-const {User} = require('../db/models')
+const {User} = require('../fileDb')
 module.exports = router
 
 /**
@@ -13,7 +13,7 @@ module.exports = router
  * by git! In this case, use a file called `.env` in your root directory, which will
  * set these environment variables like so:
  *
- * GOOGLE_CLIENT_ID="your google client id"
+ * GOOGLE_CLIENT_ID="your google cli"googleId",googleIdnt id"
  * GOOGLE_CLIENT_SECRET="your google client secret"
  * GOOGLE_CALLBACK="/your/google/callback"
  */
@@ -29,7 +29,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   const strategy = new GoogleStrategy(
     googleConfig,
-    (token, refreshToken, profile, done) => {
+    async (token, refreshToken, profile, done) => {
       const googleId = profile.id
       const email = profile.emails[0].value
       const imgUrl = profile.photos[0].value
@@ -37,12 +37,22 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       const lastName = profile.name.familyName
       const fullName = profile.displayName
 
-      User.findOrCreate({
-        where: {googleId},
-        defaults: {email, imgUrl, firstName, lastName, fullName},
-      })
-        .then(([user]) => done(null, user))
-        .catch(done)
+      try {
+        let user = await User.findOneByKeyValue('googleId', googleId)
+        if (!user) {
+          user = await User.create({email: email, googleId: googleId})
+        }
+        done(null, user)
+      } catch {
+        done()
+      }
+
+      // User.findOrCreate({
+      //   where: {googleId},
+      //   defaults: {email, imgUrl, firstName, lastName, fullName},
+      // })
+      //   .then(([user]) => done(null, user))
+      //   .catch(done)
     }
   )
 

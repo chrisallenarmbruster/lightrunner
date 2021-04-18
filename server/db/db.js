@@ -1,28 +1,28 @@
-const Sequelize = require('sequelize')
-const pkg = require('../../package.json')
+// const Sequelize = require('sequelize')
+// const pkg = require('../../package.json')
 
-let config
+// let config
 
-if (process.env.DATABASE_URL) {
-  config = {
-    logging: false,
-    ssl: true,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
-  }
-} else {
-  config = {
-    logging: false,
-  }
-}
+// if (process.env.DATABASE_URL) {
+//   config = {
+//     logging: false,
+//     ssl: true,
+//     dialectOptions: {
+//       ssl: {
+//         require: true,
+//         rejectUnauthorized: false,
+//       },
+//     },
+//   }
+// } else {
+//   config = {
+//     logging: false,
+//   }
+// }
 
-const db = new Sequelize(
-  process.env.DATABASE_URL || `postgres://localhost:5432/${pkg.name}`,
-  config
-)
+// const db = new Sequelize(
+//   process.env.DATABASE_URL || `postgres://localhost:5432/${pkg.name}`,
+//   config
+// )
 
-module.exports = db
+// module.exports = db
