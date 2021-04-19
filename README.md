@@ -28,7 +28,7 @@ To use this as boilerplate, you'll need to take the following steps:
   and merge it into your repository. Something like this:
 
   ```
-  git remote add boilerplate-pern https://github.com/chrisallenarmbruster/boilerplate-fern.git
+  git remote add boilerplate-fern https://github.com/chrisallenarmbruster/boilerplate-fern.git
   git fetch boilerplate-fern
   git merge boilerplate-fern/main
   ```
