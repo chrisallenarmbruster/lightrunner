@@ -42,6 +42,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
         if (!user) {
           user = await User.create({
             email: email,
+            role: 'user',
             password: '',
             salt: '',
             googleId: googleId,

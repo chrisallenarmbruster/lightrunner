@@ -14,14 +14,19 @@ router.post('/login', async (req, res, next) => {
       res.status(401).send('Bad email/password')
     } else {
       req.login(
-        {id: user.id, email: user.email, googleId: user.googleId},
+        {
+          id: user.id,
+          email: user.email,
+          role: user.role,
+          googleId: user.googleId,
+        },
         (err) =>
           err
             ? next(err)
             : res.json({
                 id: user.id,
                 email: user.email,
-                googleId: user.googleId,
+                role: user.role,
               })
       )
     }
@@ -39,19 +44,25 @@ router.post('/signup', async (req, res, next) => {
       user = setSaltAndPassword(req.body)
       user = await User.create({
         email: user.email,
+        role: 'user',
         password: user.password,
         salt: user.salt,
         googleId: '',
       })
       req.login(
-        {id: user.id, email: user.email, googleId: user.googleId},
+        {
+          id: user.id,
+          email: user.email,
+          role: user.role,
+          googleId: user.googleId,
+        },
         (err) =>
           err
             ? next(err)
             : res.json({
                 id: user.id,
                 email: user.email,
-                googleId: user.googleId,
+                role: user.role,
               })
       )
     }
@@ -67,7 +78,7 @@ router.post('/logout', (req, res) => {
 })
 
 router.get('/me', (req, res) => {
-  res.json(req.user)
+  res.json({id: req.user.id, email: req.user.email, role: req.user.role})
 })
 
 router.use('/google', require('./google'))

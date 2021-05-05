@@ -10,7 +10,7 @@ const sessionStore = new MemoryStore({checkPeriod: 86400000})
 const PORT = process.env.PORT || 1337
 const app = express()
 const socketio = require('socket.io')
-const {User} = require('./fileDb')
+const {User, Config} = require('./fileDb')
 module.exports = app
 
 // passport registration
@@ -25,7 +25,7 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-const createApp = () => {
+const createWebApp = () => {
   // logging middleware
   app.use(morgan('dev'))
 
@@ -91,8 +91,9 @@ const startListening = () => {
 }
 
 async function bootApp() {
+  await Config.init()
   await User.init()
-  await createApp()
+  await createWebApp()
   await startListening()
 }
 // This evaluates as true when this file is run directly from the command line,
@@ -102,5 +103,5 @@ async function bootApp() {
 if (require.main === module) {
   bootApp()
 } else {
-  createApp()
+  createWebApp()
 }

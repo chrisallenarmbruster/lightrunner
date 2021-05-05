@@ -8,7 +8,7 @@ const NavBar = ({handleClick, isLoggedIn}) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <Link className="navbar-brand text-primary fw-bold" to="/landing">
-        Brand
+        LightRunner
       </Link>
       <button
         className="navbar-toggler"

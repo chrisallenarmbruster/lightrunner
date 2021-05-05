@@ -8,6 +8,7 @@ router.get('/', async (req, res, next) => {
     const usersSubset = users.map((element) => ({
       id: element.id,
       email: element.email,
+      role: element.role,
     }))
     res.json(usersSubset)
   } catch (err) {

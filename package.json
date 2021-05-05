@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-fern",
+  "name": "LightRunner",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started!",
+  "description": "Xmas light Express/Node app for Raspberry Pi with React/Redux front end.",
   "engines": {
     "node": "~12.11.1"
   },

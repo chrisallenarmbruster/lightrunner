@@ -1,24 +1,42 @@
 'use strict'
 
-const {User} = require('../server/fileDb')
+const {User, Config} = require('../server/fileDb')
 const {setSaltAndPassword} = require('../server/fileDb/passwordTools')
 
 async function seed() {
+  await Config.reset()
   await User.reset()
+
+  const defaultConfiguration = {
+    defaultMode: 'show',
+    baseDelay: 50,
+    baseCycles: 5,
+    latitude: 42.192324,
+    longtitude: -88.088098,
+    elevation: 260,
+    defaultStartTime: 1020,
+    defaultStopTime: 1430,
+    port: 3000,
+  }
+
+  await Config.create(defaultConfiguration)
 
   const users = [
     {
       email: 'default@email.com',
+      role: 'user',
       password: '123',
       googleId: null,
     },
     {
-      email: 'user1@email.com',
+      email: 'user@email.com',
+      role: 'user',
       password: '123',
       googleId: null,
     },
     {
-      email: 'user2@email.com',
+      email: 'admin@email.com',
+      role: 'admin',
       password: '123',
       googleId: null,
     },
@@ -28,6 +46,7 @@ async function seed() {
     let user = await setSaltAndPassword(users[i])
     user = await User.create({
       email: user.email,
+      role: user.role,
       password: user.password,
       salt: user.salt,
       googleId: user.googleId,

@@ -1,0 +1,17 @@
+{
+  "lastPk": 1,
+  "data": [
+    {
+      "id": 1,
+      "defaultMode": "show",
+      "baseDelay": 50,
+      "baseCycles": 5,
+      "latitude": 42.192324,
+      "longtitude": -88.088098,
+      "elevation": 260,
+      "defaultStartTime": 1020,
+      "defaultStopTime": 1430,
+      "port": 3000
+    }
+  ]
+}

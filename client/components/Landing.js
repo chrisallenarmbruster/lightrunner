@@ -16,10 +16,7 @@ const Landing = () => {
           />
           <div className="container r4-carousel-container">
             <h1>Call to Action #1 </h1>
-            <Link
-              to="/login"
-              className="btn btn-primary btn-lg mb-5 text-light"
-            >
+            <Link to="/login" className="btn btn-primary btn-lg mb-5">
               Action #1
             </Link>
           </div>
@@ -31,10 +28,7 @@ const Landing = () => {
           />
           <div className="container r4-carousel-container">
             <h1>Call to Action #2</h1>
-            <Link
-              to="/login"
-              className="btn btn-primary btn-lg mb-5 text-light"
-            >
+            <Link to="/login" className="btn btn-primary btn-lg mb-5">
               Action #2
             </Link>
           </div>
@@ -46,10 +40,7 @@ const Landing = () => {
           />
           <div className="container r4-carousel-container">
             <h1>Call to Action #3</h1>
-            <Link
-              to="/login"
-              className="btn btn-primary btn-lg mb-5 text-light"
-            >
+            <Link to="/login" className="btn btn-primary btn-lg mb-5">
               Action #3
             </Link>
           </div>

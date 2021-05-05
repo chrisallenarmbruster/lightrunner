@@ -2,7 +2,9 @@
 //and is persistent through storage to the local filesystem rather than a database
 const FileDbTable = require('./FileDbTable')
 
+const Config = new FileDbTable('config.json')
 const User = new FileDbTable('user.json')
+
 //Insert other persistent tables to storee to filesystem here.
 
-module.exports = {User}
+module.exports = {User, Config}

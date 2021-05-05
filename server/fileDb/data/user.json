@@ -4,22 +4,25 @@
     {
       "id": 1,
       "email": "default@email.com",
-      "password": "623cd8d29a7ad87f2f43668e98cb027c263729c86d7a8facfa4cb589e53293f4",
-      "salt": "DC7wTy8/mxYKY+wd6bgvxQ==",
+      "role": "user",
+      "password": "9521a0014c55f13180057ada4db3b3f7b8e5d9300243252ce9e2b2f3dcad48a9",
+      "salt": "HEMd5IrPSU8jzT/r11Pruw==",
       "googleId": null
     },
     {
       "id": 2,
-      "email": "user1@email.com",
-      "password": "ff20af29da95b317e104ae832d2e20a21e162af048092bee77362cc68c84d384",
-      "salt": "462g836QKFdXqdz3qjEBaw==",
+      "email": "user@email.com",
+      "role": "user",
+      "password": "40e26bbd08ea07b3476040445f57b96d4193c819addb341fcdcff62f1653178b",
+      "salt": "YEHqIpKuQ1pyl40iGOegag==",
       "googleId": null
     },
     {
       "id": 3,
-      "email": "user2@email.com",
-      "password": "6742bff819c380e7c339f869cae4dea2bc773b9a1aaf690e258271a26f11c24a",
-      "salt": "EumSgGpP7c3/gIwUef9xJg==",
+      "email": "admin@email.com",
+      "role": "admin",
+      "password": "4cb79460ba7a480b84a2a0641a4d9acfeb2ad33ef165464dd4c2b967c1266b5d",
+      "salt": "df4PJZAHwD4AJKtCEKSolA==",
       "googleId": null
     }
   ]
