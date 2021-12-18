@@ -1,3 +1,11 @@
+# LightRunner
+
+LightRunner is an application for creating light shows (i.e. xmas lights) via the GPIO pins on
+a Raspberry Pi single board computer. It includes a backend service that runs and controls
+the lightshow, an API for interacting with it and a React/Redux front end. To avoid the need
+of a local or networked database, it emulates CRUD operations using the local filesystem, see
+boilerplate-fern below.
+
 # boilerplate-fern
 
 _Full Stack without a Database_
@@ -16,36 +24,6 @@ boots. More details are included in the 'Data' section below.
 Note that this is not a scaleable solution, but just the opposite. It is
 a miniturized solution for when data storage and retrival needs are lower
 and simultaneous logins are low as well.
-
-## Setup
-
-To use this as boilerplate, you'll need to take the following steps:
-
-- Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  GitHub and clone it to your local machine) named for the app that you
-  will be using this boilerplate for. Then fetch the boilerplate
-  and merge it into your repository. Something like this:
-
-  ```
-  git remote add boilerplate-fern https://github.com/chrisallenarmbruster/boilerplate-fern.git
-  git fetch boilerplate-fern
-  git merge boilerplate-fern/main
-  ```
-
-- Why did we do that? Because every once in a while, `boilerplate-fern` may
-  be updated with additional features or bug fixes, and you can easily
-  get those changes from now on by entering:
-
-  ```
-  git fetch boilerplate-fern
-  git merge boilerplate-fern/main
-  ```
-
-## Customize
-
-- Update project name and description in `package.json`
-- `npm install`
 
 ## Data
 
@@ -97,16 +75,6 @@ script directory to get you started that creates three user accounts.
     ```
     PORT=8080
     ```
-
-## Linting
-
-Linters are fundamental to any project. They ensure that your code
-has a consistent style, which is critical to writing readable code.
-
-This boilerplate comes with a working linter (ESLint, with
-`eslint-config-fullstack`) "out of the box." Any linter rule that you
-object to can be "turned off" in `.eslintrc.json`. You may also choose
-an entirely different config if you don't like this one.
 
 ## Styling (SASS, SCSS, CSS)
 
