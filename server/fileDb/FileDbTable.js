@@ -47,7 +47,7 @@ class FileDbTable {
   findAll() {
     return this.data
   }
-  FileDbTable
+
   async findById(id) {
     const data = await this.data.find((element) => element.id === id)
     if (data) {
