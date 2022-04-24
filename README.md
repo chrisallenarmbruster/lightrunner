@@ -4,7 +4,8 @@ LightRunner is an application for creating light shows (i.e. xmas lights) via th
 a Raspberry Pi single board computer. It includes a backend service that runs and controls
 the lightshow, an API for interacting with it and a React/Redux front end. To avoid the need
 of a local or networked database, it emulates CRUD operations using the local filesystem, see
-boilerplate-fern below.
+boilerplate-fern below.  It has been confirmed to work on the Raspberry Pi Zero model and more 
+capable versions.  For persistence, it uses json stored in the local file system.
 
 # boilerplate-fern
 
